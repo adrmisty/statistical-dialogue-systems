@@ -1,0 +1,32 @@
+{
+  "description": "This tests if beliefs and DB results are processed correctly. Note that ids/tokens in the collated version will differ! Also note that this ignores non-active domains. If the train example also has restaurant results (DB & belief) on the output, it's unexpected but actually better.",
+  "input": {
+        "selected_items": [0, 2]
+  },
+  "expected_output": {
+      "belief_state": [
+          {"restaurant": {"area": ["centre"], "food": ["chinese"]}}, 
+          {"train": {"day": ["sunday"], "leaveat": ["16:15"]}}
+      ], 
+      "database_results": [
+          {"restaurant": 10}, 
+          {"train": 162}
+      ], 
+      "belief_state_ids": [
+          [50258, 1391, 4512, 1391, 1110, 1058, 37437, 323, 837, 2666, 265, 1058, 1467, 25, 1314, 1782, 1782],
+          [50258, 1391, 7072, 1391, 1989, 1058, 7372, 837, 2057, 1058, 442, 3762, 1782, 1782]
+      ], 
+      "belief_state_toks": [
+          [null, "Ġ{", "Ġtrain", "Ġ{", "Ġday", "Ġ:", "Ġsund", "ay", "Ġ,", "Ġleave", "at", "Ġ:", "Ġ16", ":", "15", "Ġ}", "Ġ}"],
+          [null, "Ġ{", "Ġrestaurant", "Ġ{", "Ġarea", "Ġ:", "Ġcentre", "Ġ,", "Ġfood", "Ġ:", "Ġch", "inese", "Ġ}", "Ġ}"]
+      ], 
+      "database_results_ids": [
+          [50257, 1391, 4512, 25090, 1782],
+          [50257, 1391, 7072, 838, 1782]
+      ], 
+      "database_results_toks": [
+          [null, "Ġ{", "Ġtrain", "Ġ162", "Ġ}"],
+          [null, "Ġ{", "Ġrestaurant", "Ġ10", "Ġ}"]
+      ]
+  }
+}

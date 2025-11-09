@@ -1,0 +1,53 @@
+Batch 0 normal:
+[
+  {
+    "context": [
+      "That's great. Can you give me the area and price range, please?",
+      "What's its address?",
+      "Thank you very much!"
+    ],
+    "utterance": "No problem. Anything else I can do for you?",
+    "delex_utterance": "No problem. Anything else I can do for you?"
+  },
+  {
+    "context": [
+      "Hi, I'll be coming in to Cambridge and I'd like a place to stay. I'd like a guesthouse with free parking.",
+      "I'd like it to be in the east, if possible.",
+      "I'll take a cheap one please."
+    ],
+    "utterance": "I found allenbell to meet your needs. Would you like me to book that for you?",
+    "delex_utterance": "I found [name] to meet your needs. Would you like me to book that for you?"
+  },
+  {
+    "context": [
+      "advice me please of a better duration",
+      "I'm sorry, did I say Friday? I meant I want a booking for 5 nights starting on THURSDAY.",
+      "Then I can I get one on Saturday for 5 nights?"
+    ],
+    "utterance": "I was able to book that for you, your reference number is DFHZ0ZL8 .",
+    "delex_utterance": "I was able to book that for you, your reference number is [ref] ."
+  },
+  {
+    "context": [
+      "I am looking for a place to stay. The hotel should be in the type of guesthouse and should include free parking"
+    ],
+    "utterance": "There are a number of guesthouses in the area with free parking. Do you have a preference for price range or area that you want to stay?",
+    "delex_utterance": "There are [choice] guesthouses in the area with free parking. Do you have a preference for price range or area that you want to stay?"
+  },
+  {
+    "context": [
+      "Yes, please try 5-star hotels with free parking.",
+      "try out 1 night then",
+      "I want to stay at a 3 star hotel with free parking."
+    ],
+    "utterance": "I'm sorry for the confusion. There are two expensive hotels with 3 stars and parking. Do you prefer the centre or the south?",
+    "delex_utterance": "I'm sorry for the confusion. There are [choice] expensive hotels with 3 stars and parking. Do you prefer the centre or the south?"
+  }
+]
+Batch 0 collate:
+{'response': [[128000, 2822, 3575, 13, 42033, 775, 358, 649, 656, 369, 499, 30], [128000, 40, 1766, 51141, 17696, 311, 3449, 701, 3966, 13, 19418, 499, 1093, 757, 311, 2363, 430, 369, 499, 30], [128000, 40, 574, 3025, 311, 2363, 430, 369, 499, 11, 701, 5905, 1396, 374, 44476, 62859, 15, 57, 43, 23, 662], [128000, 3947, 527, 264, 1396, 315, 8810, 37841, 304, 279, 3158, 449, 1949, 13217, 13, 3234, 499, 617, 264, 22698, 369, 3430, 2134, 477, 3158, 430, 499, 1390, 311, 4822, 30], [128000, 40, 2846, 14931, 369, 279, 22047, 13, 2684, 527, 1403, 11646, 25325, 449, 220, 18, 9958, 323, 13217, 13, 3234, 499, 10932, 279, 12541, 477, 279, 10007, 30]], 'delex_response': [[128000, 2822, 3575, 13, 42033, 775, 358, 649, 656, 369, 499, 30], [128000, 40, 1766, 510, 609, 60, 311, 3449, 701, 3966, 13, 19418, 499, 1093, 757, 311, 2363, 430, 369, 499, 30], [128000, 40, 574, 3025, 311, 2363, 430, 369, 499, 11, 701, 5905, 1396, 374, 510, 1116, 60, 662], [128000, 3947, 527, 510, 12008, 60, 8810, 37841, 304, 279, 3158, 449, 1949, 13217, 13, 3234, 499, 617, 264, 22698, 369, 3430, 2134, 477, 3158, 430, 499, 1390, 311, 4822, 30], [128000, 40, 2846, 14931, 369, 279, 22047, 13, 2684, 527, 510, 12008, 60, 11646, 25325, 449, 220, 18, 9958, 323, 13217, 13, 3234, 499, 10932, 279, 12541, 477, 279, 10007, 30]]}
+Number of tokens in batch 0: [28, 53, 50, 49, 48]
+Number of response tokens in batch 0: [9, 16, 14, 27, 23]
+Number of response tokens in batch 0 after collate: [12, 20, 21, 31, 29]
+Valid num samples for hotel 313
+Test num samples for hotel 399

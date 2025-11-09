@@ -1,0 +1,17 @@
+{
+  "description": "This tests whether the model trains (by overfitting on a small example). Note that generated_text expects greedy decoding, disregard if you use something else.",
+  "input": {
+      "input_ids": [[15496, 11, 703, 389, 345, 30, 314, 716, 3734, 13, 50256, 0], [17250, 11, 703, 389, 345, 1804, 30, 314, 716, 3734, 13, 50256]],
+      "attention_mask": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+      "context_mask": [[1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0], [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]],
+      "utterance_mask": [[0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0], [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1]],
+      "cut_start": 5,
+      "cut_end": 9,
+      "prompt": "Hello, how are you?",
+      "max_length": 3
+  },
+  "expected_output": {
+      "predicted_tokens": ["ĠI", "Ġam", "Ġfine", "."],
+      "generated_text": " I am fine"
+  }
+}

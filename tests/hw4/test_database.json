@@ -1,0 +1,17 @@
+{
+  "description": "This tests whether the database search and matching is working correctly. Note that some time representations ('after 3pm', 'lunch', 'morning' etc.) may differ slightly. If the 3rd lookup result is 0 and 4th is correct, it means just that the system is case-sensitive. If the 3rd & 4th results are 64, it's actually better (over-midnight trains are not ignored)",
+  "input": {
+      "time_strs": ["noon", "12pm", "12am", "3:30am", "1pm", "five thirty four", "after 3pm", "eight twenty", "lunch", "morning", "7:23", "ten o'clock"],
+      "lookups": [
+          {"domain": "restaurant", "query": {"area": ["center"], "pricerange": ["cheap"]}},
+          {"domain": "restaurant", "query": {"area": ["centre"], "pricerange": ["cheap"]}},
+          {"domain": "train", "query": {"arriveby": ["12:00"], "departure": ["Cambridge"], "day": ["Tuesday"]}},
+          {"domain": "train", "query": {"arriveby": ["12:00"], "departure": ["cambridge"], "day": ["tuesday"]}},
+          {"domain": "hotel", "query": {"pricerange": ["cheap"], "area": ["west"], "internet": ["yes"], "type": ["guesthouse"]}}
+      ]
+  },
+  "expected_output": {
+      "time_strs": ["12:00", "12:00", "00:00", "03:30", "13:00", "05:34", "15:00", "08:20", "12:00", "07:00", "07:23", "10:00"],
+      "lookups": [0, 15, 67, 67, 1]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "description": "Function tests.hw2.test_known02 tests the Data Loader for loading context, utterance, delex_utterance and its collation.",
+  "input": {"batch_size": 5, "max_batches": 1, "shuffle": true},
+  "expected_output":
+  {
+    "batches":
+    [
+        {
+            "idx": 0,
+            "batch": [
+                {
+                    "context": "list-<class 'str'>",
+                    "utterance": "<class 'str'>",
+                    "delex_utterance": "<class 'str'>"
+                },
+                {
+                    "context": "list-<class 'str'>",
+                    "utterance": "<class 'str'>",
+                    "delex_utterance": "<class 'str'>"
+                },
+                {
+                    "context": "list-<class 'str'>",
+                    "utterance": "<class 'str'>",
+                    "delex_utterance": "<class 'str'>"
+                },
+                {
+                    "context": "list-<class 'str'>",
+                    "utterance": "<class 'str'>",
+                    "delex_utterance": "<class 'str'>"
+                },
+                {
+                    "context": "list-<class 'str'>",
+                    "utterance": "<class 'str'>",
+                    "delex_utterance": "<class 'str'>"
+                }
+            ],
+            "collate_batch": {
+                "context": [
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>"
+                ],
+                "utterance": [
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>"
+                ],
+                "delex_utterance": [
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>",
+                    "list-<class 'int'>"
+                ]
+            }
+        }
+    ]
+  }
+}

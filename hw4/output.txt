@@ -1,0 +1,86 @@
+The following is a fragment of the PAINFULLY SLOW training process of the model for homework 4.
+I actively debugged the collate_fn and delexicalization functions to see the information ultimately passed 
+to the model for training, in order to make sure that the values were correct and made sense (they do).
+
+For training, I am using A100 GPU with Google Colab Pro. I am using the settings you can see in train.py
+and this corresponds with the loss descalation values for the first (minimum) part of epoch 1 of training.
+
+1. The initial loss values fluctuate between 3.8 and 4.5, which was a relatively high error at the start of the training. 
+2. Over time, the loss values show some improvement:
+    - with drops observed at steps 600, 1100, and 1700, where the loss decreases to as low as 1.15. 
+    - but the loss continues to exhibit some instability, with increases at certain points, such as steps 500 and 700, where the values reach above 5.
+3. These rapid/abrupt changes suggest that the model is still in the process of stabilizing and learning from the data, 
+    - and it may need further fine-tuning to achieve consistent and lower loss values.
+
+However, as I mentioned: it just takes too long!!! Neither my laptop nor the GPU offered by Google Colab is helping me
+accelerate the process. But I figured I would give you my training results so far :)
+
+Adriana R.Flórez (@rodrigad / adrirflorez@gmail.com)
+
+----------------
+!python train.py
+2024-12-22 10:41:27.504163: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-12-22 10:41:27.521383: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-12-22 10:41:27.542121: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-12-22 10:41:27.548415: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-12-22 10:41:27.563366: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-12-22 10:41:28.801371: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[I 241222 10:41:30 train:39] Loading model and tokenizer...
+tokenizer_config.json: 100% 54.5k/54.5k [00:00<00:00, 66.4MB/s]
+tokenizer.json: 100% 9.09M/9.09M [00:01<00:00, 5.98MB/s]
+special_tokens_map.json: 100% 296/296 [00:00<00:00, 2.12MB/s]
+config.json: 100% 877/877 [00:00<00:00, 6.18MB/s]
+model.safetensors: 100% 2.47G/2.47G [00:58<00:00, 42.0MB/s]
+generation_config.json: 100% 189/189 [00:00<00:00, 1.37MB/s]
+[I 241222 10:42:35 train:47] Loading data...
+README.md: 100% 15.3k/15.3k [00:00<00:00, 76.1MB/s]
+multi_woz_v22.py: 100% 13.1k/13.1k [00:00<00:00, 57.2MB/s]
+[I 241222 10:42:43 mw_loader:44] Processing dialogue 1
+[I 241222 10:42:44 mw_loader:44] Processing dialogue 501
+[I 241222 10:42:47 mw_loader:44] Processing dialogue 1001
+[I 241222 10:42:49 mw_loader:44] Processing dialogue 1501
+[I 241222 10:42:52 mw_loader:44] Processing dialogue 2001
+[I 241222 10:42:55 mw_loader:44] Processing dialogue 2501
+[I 241222 10:42:56 mw_loader:44] Processing dialogue 3001
+[I 241222 10:42:59 mw_loader:44] Processing dialogue 3501
+[I 241222 10:43:02 mw_loader:44] Processing dialogue 4001
+[I 241222 10:43:04 mw_loader:44] Processing dialogue 4501
+[I 241222 10:43:07 mw_loader:44] Processing dialogue 5001
+[I 241222 10:43:09 mw_loader:44] Processing dialogue 5501
+[I 241222 10:43:12 mw_loader:44] Processing dialogue 6001
+[I 241222 10:43:14 mw_loader:44] Processing dialogue 6501
+[I 241222 10:43:16 mw_loader:44] Processing dialogue 7001
+[I 241222 10:43:19 mw_loader:44] Processing dialogue 7501
+[I 241222 10:43:22 mw_loader:44] Processing dialogue 8001
+[I 241222 10:43:23 mw_loader:56] Saving 56776 examples to ./train_preprocessed_data.pickle.
+[I 241222 10:43:29 mw_loader:44] Processing dialogue 1
+[I 241222 10:43:30 mw_loader:44] Processing dialogue 501
+[I 241222 10:43:32 mw_loader:56] Saving 7374 examples to ./validation_preprocessed_data.pickle.
+[I 241222 10:43:32 train:50] Initializing formatting & batching
+[I 241222 10:43:32 train:57] Initializing PEFT model, optimizer & scheduler...
+[I 241222 10:43:33 train:109] Starting training...
+[I 241222 10:43:33 trainer:35] Starting training...
+[I 241222 10:43:33 trainer:37] ====== Epoch 0/1 Training ======
+  0% 0/56776 [00:00<?, ?it/s][I 241222 10:43:35 trainer:88] Step 0: loss = 3.8044188022613525
+  0% 100/56776 [02:35<27:56:34,  1.77s/it][I 241222 10:46:10 trainer:88] Step 100: loss = 4.445582389831543
+  0% 200/56776 [05:08<23:45:50,  1.51s/it][I 241222 10:48:43 trainer:88] Step 200: loss = 3.323254108428955
+  1% 300/56776 [07:35<24:18:23,  1.55s/it][I 241222 10:51:10 trainer:88] Step 300: loss = 4.537411689758301
+  1% 400/56776 [10:07<21:30:22,  1.37s/it][I 241222 10:53:42 trainer:88] Step 400: loss = 4.042794704437256
+  1% 500/56776 [12:42<20:42:01,  1.32s/it][I 241222 10:56:17 trainer:88] Step 500: loss = 5.196086883544922
+  1% 600/56776 [15:12<23:39:41,  1.52s/it][I 241222 10:58:47 trainer:88] Step 600: loss = 2.0644161701202393
+  1% 700/56776 [17:41<22:12:01,  1.43s/it][I 241222 11:01:16 trainer:88] Step 700: loss = 5.079627513885498
+  1% 800/56776 [20:10<21:12:59,  1.36s/it][I 241222 11:03:44 trainer:88] Step 800: loss = 2.883136510848999
+  2% 900/56776 [22:36<25:11:13,  1.62s/it][I 241222 11:06:11 trainer:88] Step 900: loss = 2.196319580078125
+  2% 1000/56776 [25:05<22:37:18,  1.46s/it][I 241222 11:08:40 trainer:88] Step 1000: loss = 4.159615993499756
+  2% 1100/56776 [27:32<20:39:57,  1.34s/it][I 241222 11:11:06 trainer:88] Step 1100: loss = 1.8421577215194702
+  2% 1200/56776 [30:05<25:15:13,  1.64s/it][I 241222 11:13:39 trainer:88] Step 1200: loss = 3.3062362670898438
+  2% 1300/56776 [32:34<22:15:11,  1.44s/it][I 241222 11:16:09 trainer:88] Step 1300: loss = 1.2477055788040161
+  2% 1400/56776 [34:57<22:22:02,  1.45s/it][I 241222 11:18:32 trainer:88] Step 1400: loss = 3.5646250247955322
+  3% 1500/56776 [37:27<25:37:27,  1.67s/it][I 241222 11:21:02 trainer:88] Step 1500: loss = 3.619053602218628
+  3% 1600/56776 [39:55<22:46:03,  1.49s/it][I 241222 11:23:30 trainer:88] Step 1600: loss = 2.9164533615112305
+  3% 1700/56776 [42:25<23:58:52,  1.57s/it][I 241222 11:26:00 trainer:88] Step 1700: loss = 1.1509488821029663
+  3% 1800/56776 [44:54<20:39:57,  1.35s/it][I 241222 11:28:29 trainer:88] Step 1800: loss = 2.367805004119873
+  3% 1900/56776 [47:25<22:09:49,  1.45s/it][I 241222 11:31:00 trainer:88] Step 1900: loss = 1.7308975458145142
+  4% 2000/56776 [49:53<23:09:22,  1.52s/it][I 241222 11:33:28 trainer:88] Step 2000: loss = 1.686118483543396
+  4% 2059/56776 [51:21<23:53:01,  1.57s/it]

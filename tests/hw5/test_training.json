@@ -1,0 +1,27 @@
+{
+  "description": "This tests whether the model trains (by overfitting on a small example). Again, differences in dialogue state format may cause predicted tokens to look different. Also note that generated_text expects greedy decoding & be lenient if it doesn't work, it's very brittle. Finally, note that a lot of folks have completely different implementation of the two-stage deocding that bypass generate_single, so you really need to look at the code here.",
+  "input": {
+      "data": [
+          {"context": ["I want expensive chinese."], 
+           "utterance": "I have 9, what area?", 
+           "delex_utterance": "I have [count], what area?", 
+           "belief_state": {"restaurant": {"food": "chinese", "pricerange": "expensive"}}, 
+           "database_results": {"restaurant": 9}},
+          {"context": ["I want cheap turkish."], 
+           "utterance": "I'm sorry, I haven't found any.", 
+           "delex_utterance": "I'm sorry, I haven't found any.", 
+           "belief_state": {"restaurant": {"food": "turkish", "pricerange": "cheap"}}, 
+           "database_results": {"restaurant": 0}}
+      ],
+      "prompt": "I want expensive chinese.",
+      "max_length": 20,
+      "epochs": 100
+  },
+  "expected_output": {
+      "predicted_tokens": [
+          "Ġ{", "Ġrestaurant", "Ġ{", "Ġfood", "Ġ:", "Ġtur", "kish", "Ġ,", "Ġpr", "icer", "ange", "Ġ:", "Ġcheap", "Ġ}", "Ġ}", "<|database|>", 
+          "I", "'m", "Ġsorry", ",", "ĠI", "Ġhaven", "'t", "Ġfound", "Ġany", ".", "<|endoftext|>"
+      ],
+      "generated_text": "I have [count], what area ?"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "description": "Function tests.hw2.test_known01 tests the Dataset class and its properties: Dataset length",
+  "input": {},
+  "expected_output":
+  {
+    "val": 7374
+  }
+}
