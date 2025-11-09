@@ -1,0 +1,12 @@
+logzero
+python-Levenshtein
+fuzzywuzzy
+datasets>=2.7.1
+torch
+transformers
+peft
+numpy
+diff-match-patch
+termcolor
+word2numbers
+mwzeval @ git+https://github.com/Tomiinek/MultiWOZ_Evaluation@master
